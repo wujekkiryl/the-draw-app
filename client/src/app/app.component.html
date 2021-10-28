@@ -1,4 +1,4 @@
-<div class="head">
+<div class="head" [ngClass]="{'to-top': !homeRoute}">
   <div>
     <img class="logo" src='assets/images/dices.png'>
   </div>
@@ -6,10 +6,4 @@
     the draw app
   </div>
 </div>
-<div class="body">
-  <div>
-    coming soon
-  </div>
-  <div class="dot-pulse">
-  </div>
-</div>
+<router-outlet></router-outlet>

@@ -5,7 +5,7 @@ import * as WebSocket from 'ws';
 const app = express();
 
 //initialize a simple http server
-const server = http.createServer(app);
+const server = http.createServer();
 
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
@@ -13,6 +13,13 @@ const wss = new WebSocket.Server({ server });
 interface ExtWebSocket extends WebSocket {
     isAlive: boolean;
 }
+
+app.use('/api/createRoom', require('./routes/createRoom'));
+
+app.get('*', function(req, res) {
+    res.send(404);
+    res.end();
+  });
 
 wss.on('connection', (ws: ExtWebSocket) => {
 

@@ -2,11 +2,12 @@ import * as express from 'express';
 import * as http from 'http';
 import * as WebSocket from 'ws';
 import { config } from 'dotenv';
+import { json } from 'body-parser';
 
 config();
 
 const app = express();
-
+app.use(json());
 //initialize a simple http server
 const server = http.createServer();
 
@@ -18,6 +19,7 @@ interface ExtWebSocket extends WebSocket {
 }
 
 app.use('/api/createRoom', require('./routes/createRoom'));
+app.use('/api/addPersons', require('./routes/addPersons'));
 
 app.get('*', function (req, res) {
     res.send(404);

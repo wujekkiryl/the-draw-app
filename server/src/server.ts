@@ -1,6 +1,6 @@
-import * as express from 'express';
-import * as http from 'http';
-import * as WebSocket from 'ws';
+import express from 'express';
+import http from 'http';
+import WebSocket from 'ws';
 import { config } from 'dotenv';
 import { json } from 'body-parser';
 

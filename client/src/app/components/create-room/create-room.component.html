@@ -1,3 +1,41 @@
-<div>
-    <h2>add item</h2>
+<div class="form-container">
+    <div class="persons" *ngIf="persons.length">
+        <h1>
+            <mat-icon class="group-icon">group</mat-icon>
+            persons
+        </h1>
+        <span class="person" *ngFor="let person of persons; let i = index">
+            {{person}}
+            <mat-icon
+                matTooltip="remove person"
+                matTooltipPosition="right"
+                (click)="removePerson(i)"
+                class="delete-icon">
+                delete
+            </mat-icon>
+        </span>
+    </div>
+    <form>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>person {{persons.length + 1}}</mat-label>
+          <input type="text" matInput [formControl]="formControl" [errorStateMatcher]="matcher"
+                 placeholder="type user name">
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+          <mat-icon 
+            matSuffix
+            class="icon"
+            matTooltip="add person"
+            matTooltipPosition="right"
+            (click)="addPerson(formControl.value)"
+            *ngIf="formControl.valid">
+            person_add
+        </mat-icon>
+          <mat-error *ngIf="formControl.hasError('email') && !formControl.hasError('required')">
+            Please enter a valid name
+          </mat-error>
+          <mat-error *ngIf="formControl.hasError('required')">
+            field is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
 </div>

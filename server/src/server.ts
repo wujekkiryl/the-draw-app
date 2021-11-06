@@ -20,6 +20,7 @@ interface ExtWebSocket extends WebSocket {
 
 app.use('/api/createRoom', require('./routes/createRoom'));
 app.use('/api/addPersons', require('./routes/addPersons'));
+app.use('/api/drawPairs', require('./routes/drawPairs'));
 
 app.get('*', function (req, res) {
     res.send(404);

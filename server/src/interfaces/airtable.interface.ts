@@ -9,6 +9,18 @@ export enum RoomStatuses {
     Closed = 'Closed'
 }
 
+export interface Room {
+    name: string;
+    status: RoomStatuses;
+    persons: string[];
+}
+
+export enum RoomFields {
+    Name = 'name',
+    Status = 'status',
+    Persons = 'persons'
+}
+
 export enum PersonPairedStatuses {
     NotPaired = 'Todo',
     InProgress = 'In progress',
@@ -18,7 +30,9 @@ export enum PersonPairedStatuses {
 export enum PersonFields {
     Name = 'name',
     RoomId = 'room_id',
-    Paired = 'paired'
+    Paired = 'paired',
+    GivesTo = 'gives_to',
+    GetsFrom = 'gets_from'
 } 
 
 export interface Person {
@@ -27,4 +41,10 @@ export interface Person {
     paired?: PersonPairedStatuses,
     gives_to?: string[];
     gets_from?: string[];
+    id?: string;
+}
+
+export interface PersonsDTO {
+    id: string;
+    fields: Person;
 }

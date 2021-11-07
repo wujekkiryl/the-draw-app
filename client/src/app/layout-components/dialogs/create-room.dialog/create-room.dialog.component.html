@@ -1,0 +1,13 @@
+<h1>What do You want to name your room?</h1>
+<form>
+    <mat-form-field appearance="fill">
+        <input
+            type="text"
+            matInput
+            [formControl]="formControl"
+            placeholder="type room name"
+            autocomplete="new-password"
+            (keydown)="keydownFnc($event)">
+    </mat-form-field>
+</form>
+<button mat-stroked-button color="primary" [disabled]="!formControl.valid" (click)="confirmRoomCreation()">crate room</button>

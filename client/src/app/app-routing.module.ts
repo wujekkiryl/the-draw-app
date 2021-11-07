@@ -10,7 +10,13 @@ const routes: Routes = [
   },
   {
     path: 'create-room',
-    component: CreateRoomComponent
+    component: CreateRoomComponent,
+    children: [
+      {
+        path: ':roomId',
+        component: CreateRoomComponent
+      }
+    ]
   }
 ];
 

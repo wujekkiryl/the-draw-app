@@ -16,11 +16,16 @@
         </span>
     </div>
     <form>
-        <mat-form-field class="example-full-width" appearance="fill">
+        <mat-form-field appearance="fill">
           <mat-label>person {{persons.length + 1}}</mat-label>
-          <input type="text" matInput [formControl]="formControl" [errorStateMatcher]="matcher"
-                 placeholder="type user name">
-          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+          <input
+            type="text"
+            matInput
+            [formControl]="formControl"
+            [errorStateMatcher]="matcher"
+            placeholder="type user name"
+            autocomplete="new-password"
+            (keydown)="keydownFnc($event)">
           <mat-icon 
             matSuffix
             class="icon"
@@ -37,5 +42,6 @@
             field is <strong>required</strong>
           </mat-error>
         </mat-form-field>
+        <button mat-stroked-button color="primary" [disabled]="submitDisabled">add persons</button>
       </form>
 </div>

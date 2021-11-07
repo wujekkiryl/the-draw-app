@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { Key } from 'ts-keycode-enum';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -17,6 +18,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class CreateRoomComponent implements OnInit {
 
   persons: Array<string> = [];
+  submitDisabled: boolean = true;
 
   formControl = new FormControl('', [
     Validators.required
@@ -30,12 +32,23 @@ export class CreateRoomComponent implements OnInit {
   }
 
   addPerson(name: string) {
-    this.persons.push(name);
-    this.formControl.setValue('');
+    if (name !== '') {
+      this.persons.push(name);
+      this.formControl.setValue('');
+      if (this.persons.length > 1) {
+        this.submitDisabled = false;
+      }
+    }
   }
 
   removePerson(index: number) {
     this.persons.splice(index, 1);
   }
 
+  keydownFnc(e: KeyboardEvent) {
+    if (e.keyCode === Key.Enter) {
+      e.preventDefault();
+      this.addPerson(this.formControl.value);
+    }
+  }
 }

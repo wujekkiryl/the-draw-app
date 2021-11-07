@@ -76,7 +76,8 @@
               "browserTarget": "the-draw-app-client:build:production"
             },
             "development": {
-              "browserTarget": "the-draw-app-client:build:development"
+              "browserTarget": "the-draw-app-client:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

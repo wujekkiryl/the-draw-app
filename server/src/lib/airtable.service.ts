@@ -4,8 +4,8 @@ import { AirtableOptions } from 'airtable';
 import { Tables, RoomStatuses, Person, PersonPairedStatuses, PersonFields, PersonsDTO, Room, RoomFields } from '../interfaces/airtable.interface';
 
 const config: AirtableOptions = {
-    apiKey: 'keyVWURzww2mcxNta',
-    endpointUrl: 'https://api.airtable.com'
+    apiKey: process.env.AIRTABLE_API_KEY,
+    endpointUrl: process.env.AIRTABLE_ENDPOINT_URL
 }
 
 export class AirtableService {
@@ -14,7 +14,8 @@ export class AirtableService {
 
     constructor() {
         Airtable.configure(config);
-        this.base = Airtable.base('appFcrf4z9U4eg2c4');
+        const database: string = process.env.AIRTABLE_BASE as string;
+        this.base = Airtable.base(database);
     }
 
     public async getTableData(limit: number = 5) {

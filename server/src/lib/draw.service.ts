@@ -8,12 +8,12 @@ export class DrawService {
 
     constructor() {}
 
-    public async drawPairs(roomId: string) {
+    public async drawPairs(roomId: string): Promise<string[]> {
         let room: Room;
-        // const roomData = await this.airtable.getRoom(roomId);
+        const roomData = await this.airtable.getRoom(roomId);
         // // const persons = await this.airtable.getAllPersons();
-        // const persons = await this.airtable.getTableData();
-        // console.log(persons);
+        const persons = await this.airtable.getTableData();
+        console.log(persons);
         const evenList = [
             'a',
             'b', 
